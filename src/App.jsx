@@ -1,10 +1,10 @@
-import Input from "./components/input";
-
+// import Input from "./components/input";
+import ToDo from "./components/To-Do";
 function App() {
   return (
-    <>
-      <Input />
-    </>
+    <div className="bg-neutral-800 grid py-4 min-h-screen">
+      <ToDo />
+    </div>
   );
 }
 
