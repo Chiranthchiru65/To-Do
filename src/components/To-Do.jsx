@@ -6,7 +6,13 @@ import ToDoItems from "./To-Do-Items";
 
 function ToDo() {
   const [todoList, setTodoList] = useState([]);
-  console.log(todoList);
+
+  function deleteTodo(id) {
+    setTodoList((prevTodos) => {
+      return prevTodos.filter((todo) => todo.id !== id);
+    });
+  }
+
   return (
     <>
       <div className="bg-neutral-400 place-self-center w-11/12 max-w-lg flex flex-col p-7 min-h-[550px] rounded-xl">
@@ -15,9 +21,14 @@ function ToDo() {
         <Input setTodoList={setTodoList} />
         {/* input items */}
         <>
-          <ToDoItems text="learn coding" />
           {todoList.map((item) => (
-            <ToDoItems key={item.id} text={item.text} />
+            <ToDoItems
+              key={item.id}
+              id={item.id}
+              text={item.text}
+              isComplete={item.isComplete}
+              deleteTodo={deleteTodo}
+            />
           ))}
         </>
       </div>
